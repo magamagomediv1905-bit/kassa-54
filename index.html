@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Аренда онлайн-касс в Москве: Меркурий и Эвотор от 7 000 ₽ в месяц. Фискальный накопитель, регистрация в ФНС и подключение к ОФД включены.">
+<meta property="og:title" content="Касса 54 — аренда онлайн-касс в Москве">
+<meta property="og:description" content="Меркурий и Эвотор от 7 000 ₽ в месяц. ФН, регистрация в ФНС и ОФД включены. Доставка по Москве за день.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://kassa-54.ru/">
+<link rel="canonical" href="https://kassa-54.ru/">
+<title>Касса 54</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: documentary grid — прямые углы, хайрлайн-линейки, табличные цифры.
+   Всё, что содержит число, набрано моноширинным. Акцент один, только на данных и действиях. */
+:root{
+  --paper:#ECEDEF; --surface:#FFFFFF; --surface-2:#F4F5F6;
+  --ink:#121417; --muted:#636A72; --line:#CBCFD4; --line-soft:#DDE0E4;
+  --accent:#1E3A63; --accent-ink:#FFFFFF; --accent-soft:#DFE5EE;
+  --sans:'IBM Plex Sans',system-ui,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'Courier New',monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1113; --surface:#15181B; --surface-2:#1B1F22;
+    --ink:#E6E8EA; --muted:#939AA2; --line:#2A2F34; --line-soft:#23282C;
+    --accent:#86AAD8; --accent-ink:#0F1113; --accent-soft:#1A2430;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1113; --surface:#15181B; --surface-2:#1B1F22;
+  --ink:#E6E8EA; --muted:#939AA2; --line:#2A2F34; --line-soft:#23282C;
+  --accent:#86AAD8; --accent-ink:#0F1113; --accent-soft:#1A2430;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box; border-radius:0}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3{margin:0; font-weight:700; letter-spacing:-.018em; line-height:1.1; text-wrap:balance}
+p{margin:0}
+.wrap{width:100%; max-width:1180px; margin-inline:auto; padding-inline:20px}
+.sec{padding-block:clamp(48px,6.5vw,88px); border-top:1px solid var(--line)}
+.num{font-variant-numeric:tabular-nums}
+
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted);
+}
+.sec-head{display:grid; grid-template-columns:200px 1fr; gap:clamp(16px,3vw,40px); align-items:start}
+.sec-head h2{font-size:clamp(23px,3vw,34px)}
+.sec-head .lede{color:var(--muted); max-width:64ch; margin-top:12px; font-size:16.5px}
+@media(max-width:780px){.sec-head{grid-template-columns:1fr; gap:14px}}
+
+/* ---------- header ---------- */
+.hdr{position:sticky; top:env(safe-area-inset-top,0px); z-index:50; background:var(--paper); border-bottom:1px solid var(--ink)}
+.hdr-in{display:flex; align-items:center; gap:20px; min-height:58px}
+.logo{display:flex; align-items:baseline; gap:8px; font-weight:700; font-size:16px; letter-spacing:-.02em; text-decoration:none}
+.logo span{font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.16em; color:var(--muted); text-transform:uppercase}
+.nav{display:flex; gap:24px; margin-left:auto; font-size:14.5px}
+.nav a{text-decoration:none; color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.hdr-cta{display:flex; align-items:center; gap:16px}
+.hdr-tel{font-family:var(--mono); font-size:14px; font-weight:500; text-decoration:none; white-space:nowrap; font-variant-numeric:tabular-nums}
+@media(max-width:940px){.nav{display:none} .hdr-tel{display:none}}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight:600; font-size:15px; text-decoration:none; cursor:pointer;
+  padding:13px 24px; border:1px solid var(--ink); background:transparent; color:var(--ink);
+  font-family:inherit;
+}
+.btn-primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.btn-primary:hover{background:color-mix(in srgb,var(--accent) 85%,var(--ink))}
+.btn-ghost:hover{background:var(--surface)}
+.btn-sm{padding:9px 16px; font-size:14px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(40px,5.5vw,72px) clamp(44px,6vw,80px); border-top:none}
+.hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(28px,5vw,68px); align-items:start}
+.hero h1{font-size:clamp(31px,4.8vw,55px); letter-spacing:-.03em}
+.hero .lede{margin-top:20px; color:var(--muted); max-width:56ch; font-size:17px}
+.hero-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr}}
+
+.ticks{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:0; margin-top:38px; border-top:1px solid var(--ink)}
+.tick{padding:16px 18px 16px 0; border-right:1px solid var(--line-soft)}
+.tick:last-child{border-right:none}
+.tick b{display:block; font-size:15px; font-weight:600}
+.tick span{display:block; font-size:13.5px; color:var(--muted); margin-top:3px}
+@media(max-width:620px){.tick{border-right:none; border-bottom:1px solid var(--line-soft); padding-right:0}}
+
+/* receipt */
+.receipt{
+  background:var(--surface); border:1px solid var(--ink); padding:24px 24px 18px;
+  font-family:var(--mono); font-size:13px;
+}
+.r-head{text-align:center; border-bottom:1px dashed var(--line); padding-bottom:13px}
+.r-title{font-weight:600; letter-spacing:.14em; font-size:12px}
+.r-sub{color:var(--muted); font-size:11px; letter-spacing:.08em; margin-top:5px}
+.r-rows{display:flex; flex-direction:column; gap:8px; padding:13px 0; border-bottom:1px dashed var(--line)}
+.r-row{display:flex; justify-content:space-between; gap:14px; font-variant-numeric:tabular-nums}
+.r-row span:first-child{color:var(--muted)}
+.r-total{display:flex; justify-content:space-between; align-items:baseline; padding-top:14px; font-variant-numeric:tabular-nums; font-size:12px; letter-spacing:.1em}
+.r-total b{font-family:var(--sans); font-size:27px; letter-spacing:-.03em}
+.r-barcode{height:30px; margin-top:14px; background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 9px,var(--ink) 9px 12px,transparent 12px 14px)}
+.r-foot{margin-top:12px; padding-top:11px; border-top:1px dashed var(--line); color:var(--muted); font-size:10.5px; letter-spacing:.07em; text-align:center}
+
+/* ---------- park ---------- */
+.park{display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr)); gap:1px; margin-top:34px; background:var(--line); border:1px solid var(--line)}
+.card{background:var(--surface); padding:24px 22px 22px; display:flex; flex-direction:column; min-width:0}
+.card-top{display:flex; align-items:center; justify-content:space-between; gap:10px; padding-bottom:12px; border-bottom:1px solid var(--line-soft)}
+.brand{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+.tag{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; padding:3px 7px; border:1px solid var(--accent); color:var(--accent); font-weight:500}
+.card h3{font-size:20px; margin-top:16px}
+.specs{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:6px; font-size:14px; color:var(--muted)}
+.specs li{display:flex; gap:9px}
+.specs li::before{content:"·"; color:var(--ink)}
+.price{margin-top:auto; padding-top:22px; display:flex; align-items:baseline; justify-content:space-between; border-top:1px solid var(--line-soft); margin-top:22px}
+.price b{font-size:25px; font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+.price span{color:var(--muted); font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase}
+.park-note{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding:18px 0 0; border-top:1px solid var(--ink); margin-top:-1px; padding-top:18px}
+.park-note p{font-size:15px; color:var(--muted); max-width:62ch}
+
+/* ---------- included ---------- */
+.two{display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-top:34px; background:var(--line); border:1px solid var(--line)}
+@media(max-width:780px){.two{grid-template-columns:1fr}}
+.panel{background:var(--surface); padding:26px 24px}
+.panel h3{font-size:13px; font-family:var(--mono); font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.list{list-style:none; padding:0; margin:18px 0 0; display:flex; flex-direction:column}
+.list li{display:grid; grid-template-columns:22px 1fr; gap:4px; font-size:15px; padding:11px 0; border-bottom:1px solid var(--line-soft)}
+.list li:last-child{border-bottom:none}
+.list .m{font-family:var(--mono); font-size:13px; color:var(--accent)}
+.list.no .m{color:var(--muted)}
+.list.no li{color:var(--muted)}
+.terms{margin-top:22px; font-family:var(--mono); font-size:11.5px; color:var(--muted); line-height:1.8; letter-spacing:.04em}
+
+/* ---------- steps ---------- */
+.steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px; margin-top:34px; background:var(--line); border-top:1px solid var(--ink)}
+.step{background:var(--paper); padding:22px 20px 24px 0; min-width:0}
+.step .n{font-family:var(--mono); font-size:12px; font-weight:500; color:var(--accent); letter-spacing:.1em}
+.step h3{font-size:17px; margin-top:12px}
+.step p{color:var(--muted); font-size:14.5px; margin-top:8px}
+
+/* ---------- cases ---------- */
+.cases{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:1px; margin-top:34px; background:var(--line); border:1px solid var(--line)}
+.case{background:var(--surface); padding:22px 20px; min-width:0}
+.case h3{font-size:16px}
+.case p{color:var(--muted); font-size:14px; margin-top:7px}
+
+/* ---------- table ---------- */
+.tablewrap{overflow-x:auto; margin-top:34px; border:1px solid var(--line); background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:560px; font-size:15px}
+th,td{text-align:left; padding:14px 20px; border-bottom:1px solid var(--line-soft)}
+tr:last-child td{border-bottom:none}
+thead th{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:500; border-bottom:1px solid var(--line)}
+thead th.hl{color:var(--accent)}
+td:first-child{color:var(--muted)}
+td.v{font-weight:600; font-variant-numeric:tabular-nums}
+.note{margin-top:16px; font-size:14px; color:var(--muted); max-width:72ch}
+
+/* ---------- faq ---------- */
+.faq{margin-top:34px; border-top:1px solid var(--ink)}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer; list-style:none; padding:18px 40px 18px 0; position:relative; font-weight:600; font-size:16.5px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; position:absolute; right:4px; top:18px; font-family:var(--mono); font-size:17px; color:var(--accent)}
+details[open] summary::after{content:"−"}
+details p{padding:0 0 20px; color:var(--muted); max-width:76ch}
+
+/* ---------- form ---------- */
+.cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-top:34px; background:var(--line); border:1px solid var(--line)}
+@media(max-width:860px){.cta-grid{grid-template-columns:1fr}}
+.cta-left,.cta-right{background:var(--surface); padding:clamp(24px,3.2vw,38px)}
+.cta-left h2{font-size:clamp(22px,2.6vw,30px)}
+.cta-left p{color:var(--muted); margin-top:14px; max-width:46ch}
+.contacts{list-style:none; padding:0; margin:28px 0 0; border-top:1px solid var(--line-soft)}
+.contacts li{display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--line-soft); flex-wrap:wrap}
+.contacts .k{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.contacts .v{font-size:16px; font-weight:600; font-variant-numeric:tabular-nums}
+form{display:flex; flex-direction:column; gap:16px}
+label{font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:7px}
+input,select,textarea{
+  width:100%; font-family:inherit; font-size:15.5px; color:var(--ink);
+  background:var(--surface-2); border:1px solid var(--line); padding:12px 14px;
+}
+textarea{resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--accent); outline:none}
+.agree{font-size:12.5px; color:var(--muted); line-height:1.5}
+.sent{padding:22px; border:1px solid var(--accent); background:var(--accent-soft); font-size:15px}
+.sent b{display:block; font-size:17px; margin-bottom:6px}
+
+/* ---------- footer ---------- */
+.ftr{border-top:1px solid var(--ink); padding-block:28px; font-size:14px; color:var(--muted)}
+.ftr-in{display:flex; flex-wrap:wrap; gap:12px 28px; align-items:center; justify-content:space-between}
+.ftr a{text-decoration:none}
+.ftr a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="#top">Касса 54 <span>Москва</span></a>
+    <nav class="nav">
+      <a href="#park">Кассы и цены</a>
+      <a href="#included">Что входит</a>
+      <a href="#how">Порядок работы</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="hdr-tel" href="tel:+74950000000">+7 495 000-00-00</a>
+      <a class="btn btn-primary btn-sm" href="#zayavka">Оставить заявку</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="wrap sec hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Аренда контрольно-кассовой техники</p>
+        <h1 style="margin-top:18px">Онлайн-касса в аренду от 7 000 ₽ в месяц</h1>
+        <p class="lede">Меркурий и Эвотор с фискальным накопителем, настройкой и регистрацией в ФНС. Привозим по Москве за день, подключаем к ОФД и забираем, когда касса больше не нужна.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#zayavka">Подобрать кассу</a>
+          <a class="btn btn-ghost" href="#park">Модели и цены</a>
+        </div>
+      </div>
+
+      <div class="receipt">
+        <div class="r-head">
+          <div class="r-title">КАССА 54 · МОСКВА</div>
+          <div class="r-sub">АРЕНДА ККТ · ТАРИФ «СТАРТ»</div>
+        </div>
+        <div class="r-rows">
+          <div class="r-row"><span>Меркурий 115Ф</span><span>1 шт.</span></div>
+          <div class="r-row"><span>Фискальный накопитель</span><span>15 мес.</span></div>
+          <div class="r-row"><span>Регистрация в ФНС</span><span>0 ₽</span></div>
+          <div class="r-row"><span>Подключение к ОФД</span><span>0 ₽</span></div>
+          <div class="r-row"><span>Доставка по Москве</span><span>0 ₽</span></div>
+          <div class="r-row"><span>Техподдержка</span><span>24/7</span></div>
+        </div>
+        <div class="r-total"><span>ИТОГО В МЕСЯЦ</span><b>7 000 ₽</b></div>
+        <div class="r-barcode" aria-hidden="true"></div>
+        <div class="r-foot">ДОГОВОР ЗА ОДИН ДЕНЬ · ОПЛАТА ПО СЧЁТУ</div>
+      </div>
+    </div>
+
+    <div class="ticks">
+      <div class="tick"><b>ФН 15 или 36 месяцев</b><span>Включён в стоимость</span></div>
+      <div class="tick"><b>Регистрация в ФНС</b><span>Берём на себя</span></div>
+      <div class="tick"><b>Замена за один день</b><span>Подменная касса при поломке</span></div>
+      <div class="tick"><b>Без залога</b><span>При договоре от трёх месяцев</span></div>
+    </div>
+  </section>
+
+  <!-- PARK -->
+  <section class="wrap sec" id="park">
+    <div class="sec-head">
+      <p class="eyebrow">01 — Парк техники</p>
+      <div>
+        <h2>Пять моделей под разный формат торговли</h2>
+        <p class="lede">Все кассы в реестре ККТ, с актуальной прошивкой под ФФД 1.2 и маркировку. Цена указана за месяц при аренде от трёх месяцев.</p>
+      </div>
+    </div>
+
+    <div class="park">
+      <article class="card">
+        <div class="card-top"><span class="brand">Меркурий</span><span class="tag">Хит</span></div>
+        <h3>Меркурий 115Ф</h3>
+        <ul class="specs">
+          <li>Автономная работа до 20 часов</li>
+          <li>Чековая лента 57 мм</li>
+          <li>GSM, Wi-Fi, Ethernet</li>
+          <li>Вес 400 г — для выезда</li>
+        </ul>
+        <div class="price"><b>7 000 ₽</b><span>в месяц</span></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="brand">Меркурий</span></div>
+        <h3>Меркурий 185Ф</h3>
+        <ul class="specs">
+          <li>Встроенный аккумулятор и GSM-модем</li>
+          <li>Печать 10 строк в секунду</li>
+          <li>Работа от прикуривателя</li>
+          <li>Для курьеров и доставки</li>
+        </ul>
+        <div class="price"><b>8 500 ₽</b><span>в месяц</span></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="brand">Эвотор</span></div>
+        <h3>Эвотор 5i</h3>
+        <ul class="specs">
+          <li>Смарт-терминал с экраном 5,5"</li>
+          <li>Эквайринг в одном корпусе</li>
+          <li>Сканер маркировки в камере</li>
+          <li>Магазин приложений Эвотор</li>
+        </ul>
+        <div class="price"><b>10 500 ₽</b><span>в месяц</span></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="brand">Эвотор</span><span class="tag">Для кафе</span></div>
+        <h3>Эвотор 7.2</h3>
+        <ul class="specs">
+          <li>Экран 7", подключение сканера и весов</li>
+          <li>Товароучёт и складские остатки</li>
+          <li>Поддержка ЕГАИС и маркировки</li>
+          <li>Стационарная точка продаж</li>
+        </ul>
+        <div class="price"><b>12 500 ₽</b><span>в месяц</span></div>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><span class="brand">Эвотор</span></div>
+        <h3>Эвотор 10</h3>
+        <ul class="specs">
+          <li>Планшет 10" с док-станцией</li>
+          <li>4 USB-порта под периферию</li>
+          <li>Кассовый ящик и дисплей покупателя</li>
+          <li>Супермаркеты и залы с потоком</li>
+        </ul>
+        <div class="price"><b>15 000 ₽</b><span>в месяц</span></div>
+      </article>
+    </div>
+
+    <div class="park-note">
+      <p>Нужно несколько касс на точки или модель под конкретную задачу — посчитаем отдельным тарифом, включая оборудование в комплекте со сканером и денежным ящиком.</p>
+      <a class="btn btn-ghost btn-sm" href="#zayavka">Запросить расчёт</a>
+    </div>
+  </section>
+
+  <!-- INCLUDED -->
+  <section class="wrap sec" id="included">
+    <div class="sec-head">
+      <p class="eyebrow">02 — Состав услуги</p>
+      <div><h2>Что входит в ежемесячный платёж</h2></div>
+    </div>
+
+    <div class="two">
+      <div class="panel">
+        <h3>Входит в стоимость</h3>
+        <ul class="list">
+          <li><span class="m">+</span><span>Кассовый аппарат и фискальный накопитель на 15 или 36 месяцев</span></li>
+          <li><span class="m">+</span><span>Регистрация в ФНС и подключение к ОФД по доверенности</span></li>
+          <li><span class="m">+</span><span>Настройка номенклатуры, ставок НДС и шаблона чека</span></li>
+          <li><span class="m">+</span><span>Доставка и забор техники в пределах МКАД</span></li>
+          <li><span class="m">+</span><span>Подменная касса на время ремонта</span></li>
+          <li><span class="m">+</span><span>Поддержка кассира по телефону и в Telegram, включая выходные</span></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Оплачивается отдельно</h3>
+        <ul class="list no">
+          <li><span class="m">−</span><span>Чековая лента — 60 ₽ за рулон, привозим по запросу</span></li>
+          <li><span class="m">−</span><span>Выезд инженера за МКАД — от 1 500 ₽</span></li>
+          <li><span class="m">−</span><span>Перерегистрация при смене адреса или системы налогообложения</span></li>
+          <li><span class="m">−</span><span>Эквайринговый терминал, если он не встроен в модель</span></li>
+          <li><span class="m">−</span><span>Ремонт при механических повреждениях — по факту</span></li>
+        </ul>
+        <p class="terms">ДОГОВОР ОТ ОДНОГО МЕСЯЦА<br>ОПЛАТА ПО СЧЁТУ ДЛЯ ИП И ООО<br>ЗАКРЫВАЮЩИЕ ДОКУМЕНТЫ КАЖДЫЙ МЕСЯЦ</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="wrap sec" id="how">
+    <div class="sec-head">
+      <p class="eyebrow">03 — Порядок работы</p>
+      <div><h2>От заявки до первого чека — два дня</h2></div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="n">Шаг 1</div>
+        <h3>Заявка и подбор</h3>
+        <p>Уточняем, чем торгуете, нужна ли маркировка, ЕГАИС и эквайринг. Предлагаем модель и срок.</p>
+      </div>
+      <div class="step">
+        <div class="n">Шаг 2</div>
+        <h3>Договор и счёт</h3>
+        <p>Присылаем договор и счёт в тот же день. Нужны ИНН, ОГРНИП или ОГРН и реквизиты.</p>
+      </div>
+      <div class="step">
+        <div class="n">Шаг 3</div>
+        <h3>Регистрация в ФНС</h3>
+        <p>Ставим кассу на учёт по вашей КЭП, подключаем ОФД, заносим товары и цены.</p>
+      </div>
+      <div class="step">
+        <div class="n">Шаг 4</div>
+        <h3>Доставка и запуск</h3>
+        <p>Привозим настроенную кассу, печатаем отчёт об открытии смены и обучаем кассира.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="wrap sec">
+    <div class="sec-head">
+      <p class="eyebrow">04 — Кому подходит</p>
+      <div><h2>Когда покупать кассу невыгодно</h2></div>
+    </div>
+
+    <div class="cases">
+      <div class="case"><h3>Сезонная торговля</h3><p>Ярмарки, летние веранды, новогодние точки. Касса нужна три месяца, а не три года.</p></div>
+      <div class="case"><h3>Выездные продажи</h3><p>Фестивали, маркеты, выставки. Автономный Меркурий на неделю мероприятия.</p></div>
+      <div class="case"><h3>Курьерская доставка</h3><p>Несколько компактных касс на курьеров — парк меняется под нагрузку.</p></div>
+      <div class="case"><h3>Запуск новой точки</h3><p>Проверяете гипотезу без вложений в технику. Не пошло — вернули кассу, закрыли договор.</p></div>
+      <div class="case"><h3>Подмена на время ремонта</h3><p>Своя касса в сервисе, а торговля без ККТ — это штраф. Привозим замену на следующий день.</p></div>
+      <div class="case"><h3>Тендер или разовый проект</h3><p>Контракт с чётким сроком. Аренда закрывается вместе с проектом.</p></div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="wrap sec">
+    <div class="sec-head">
+      <p class="eyebrow">05 — Расчёт</p>
+      <div>
+        <h2>Аренда против покупки: Эвотор 7.2</h2>
+        <p class="lede">Шесть месяцев работы одной точки. Цифры усреднённые по рынку — точную смету присылаем под ваш случай.</p>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Статья расходов</th><th class="hl">Аренда</th><th>Покупка</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Касса</td><td class="v">0 ₽</td><td class="v">34 000 ₽</td></tr>
+          <tr><td>Фискальный накопитель, 15 мес.</td><td class="v">включён</td><td class="v">11 000 ₽</td></tr>
+          <tr><td>Регистрация в ФНС и настройка</td><td class="v">включена</td><td class="v">4 000 ₽</td></tr>
+          <tr><td>Договор с ОФД</td><td class="v">включён</td><td class="v">3 000 ₽</td></tr>
+          <tr><td>Платёж за шесть месяцев</td><td class="v">75 000 ₽</td><td class="v">—</td></tr>
+          <tr><td>Итого за полгода</td><td class="v">75 000 ₽</td><td class="v">52 000 ₽</td></tr>
+          <tr><td>Что остаётся потом</td><td class="v">договор закрыт, технику забрали</td><td class="v">касса на балансе и в учёте</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Аренда выигрывает на коротком горизонте и там, где касса нужна не круглый год: нет разовых вложений, вся сумма идёт в расходы, технику обслуживаем мы. Если точка работает стабильно больше года — честно скажем, что выгоднее купить.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap sec" id="faq">
+    <div class="sec-head">
+      <p class="eyebrow">06 — Вопросы</p>
+      <div><h2>Что обычно спрашивают</h2></div>
+    </div>
+
+    <div class="faq">
+      <details open>
+        <summary>На кого регистрируется касса?</summary>
+        <p>На вас — на ваше ИП или ООО. Касса стоит на учёте в ФНС на ваше юрлицо, чеки идут от вашего имени. Мы владеем техникой и обслуживаем её по договору аренды.</p>
+      </details>
+      <details>
+        <summary>Какой минимальный срок аренды?</summary>
+        <p>Один месяц. От трёх месяцев отменяем залог, от шести — даём скидку на тариф. Для разовых мероприятий есть недельный тариф, считаем отдельно.</p>
+      </details>
+      <details>
+        <summary>Нужна ли моя электронная подпись?</summary>
+        <p>Для регистрации в ФНС нужна КЭП на руководителя или ИП. Если подписи нет, подскажем, где выпустить за один день. Всё остальное делаем сами.</p>
+      </details>
+      <details>
+        <summary>Что с маркировкой и ЕГАИС?</summary>
+        <p>Все кассы работают по ФФД 1.2 и передают коды маркировки. Для алкоголя нужен Эвотор с подключённым УТМ — настраиваем при запуске, если торгуете пивом или крепким.</p>
+      </details>
+      <details>
+        <summary>Что будет, если касса сломается?</summary>
+        <p>Звоните в поддержку, диагностируем удалённо. Если дело в технике — на следующий рабочий день привозим подменную кассу и переносим настройки. Простоя не будет.</p>
+      </details>
+      <details>
+        <summary>Как платить и какие документы будут?</summary>
+        <p>Счёт на ИП или ООО, оплата по безналу. Каждый месяц присылаем акт и счёт-фактуру — аренда идёт в расходы и уменьшает налоговую базу.</p>
+      </details>
+      <details>
+        <summary>Работаете только по Москве?</summary>
+        <p>Доставка и обслуживание бесплатно в пределах МКАД. По области выезжаем за отдельную плату, в другие регионы отправляем настроенную кассу транспортной компанией.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="wrap sec" id="zayavka">
+    <div class="sec-head">
+      <p class="eyebrow">07 — Заявка</p>
+      <div><h2>Подберём кассу под вашу торговлю</h2></div>
+    </div>
+
+    <div class="cta-grid">
+      <div class="cta-left">
+        <h2 style="font-size:20px">Перезвоним в течение рабочего часа</h2>
+        <p>Уточним детали, предложим модель и пришлём счёт с итоговой ценой. Без повторных звонков и рассылок.</p>
+        <ul class="contacts">
+          <li><span class="k">Телефон</span><span class="v">+7 495 000-00-00</span></li>
+          <li><span class="k">Telegram</span><span class="v">@kassa54</span></li>
+          <li><span class="k">Почта</span><span class="v">info@kassa-54.ru</span></li>
+          <li><span class="k">Время работы</span><span class="v">Пн–Сб, 09:00–20:00</span></li>
+        </ul>
+      </div>
+
+      <div class="cta-right">
+        <form id="lead" novalidate>
+          <div>
+            <label for="f-name">Имя</label>
+            <input id="f-name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="f-phone">Телефон</label>
+            <input id="f-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+          </div>
+          <div>
+            <label for="f-model">Что интересует</label>
+            <select id="f-model" name="model">
+              <option>Нужен подбор</option>
+              <option>Меркурий 115Ф — 7 000 ₽/мес</option>
+              <option>Меркурий 185Ф — 8 500 ₽/мес</option>
+              <option>Эвотор 5i — 10 500 ₽/мес</option>
+              <option>Эвотор 7.2 — 12 500 ₽/мес</option>
+              <option>Эвотор 10 — 15 000 ₽/мес</option>
+              <option>Несколько касс на точки</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-comment">Комментарий</label>
+            <textarea id="f-comment" name="comment" rows="3" placeholder="Чем торгуете, с какого числа нужна касса, нужна ли маркировка"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Отправить заявку</button>
+          <p class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        </form>
+        <div class="sent" id="sent" hidden>
+          <b>Заявка принята</b>
+          Перезвоним на указанный номер в течение рабочего часа и пришлём расчёт.
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <span>Касса 54 — аренда онлайн-касс в Москве</span>
+    <span>ИП Иванов И. И. · ИНН 000000000000</span>
+    <a href="#top">Наверх</a>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('lead');
+    var sent = document.getElementById('sent');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = form.querySelector('#f-name');
+      var phone = form.querySelector('#f-phone');
+      if(!name.value.trim()){ name.focus(); return; }
+      if(phone.value.replace(/\D/g,'').length < 10){ phone.focus(); return; }
+      form.hidden = true;
+      sent.hidden = false;
+    });
+  })();
+</script>
+
+</body>
+</html>
