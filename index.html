@@ -205,6 +205,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent); outline:none
 .ftr-in{display:flex; flex-wrap:wrap; gap:12px 28px; align-items:center; justify-content:space-between}
 .ftr a{text-decoration:none}
 .ftr a:hover{color:var(--ink)}
+.ftr-links{display:flex; flex-wrap:wrap; gap:8px 22px}
+.code{font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:var(--muted)}
+.doclink{display:flex; flex-direction:column; text-decoration:none}
+.doclink .go{margin-top:auto; padding-top:16px; font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--accent)}
+.doclink:hover h3{color:var(--accent)}
+.agree a{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -218,6 +224,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent); outline:none
       <a href="#included">Что входит</a>
       <a href="#how">Порядок работы</a>
       <a href="#faq">Вопросы</a>
+      <a href="/support.html">Поддержка</a>
     </nav>
     <div class="hdr-cta">
       <a class="hdr-tel" href="tel:+79167485455">+7 916 748-54-55</a>
@@ -512,7 +519,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent); outline:none
           <li><span class="k">Telegram</span><span class="v">@XXLVII1</span></li>
           <li><span class="k">Почта</span><span class="v">info@kassa-54.ru</span></li>
           <li><span class="k">Время работы</span><span class="v">Пн–Сб, 09:00–20:00</span></li>
+          <li><span class="k">Срок ответа</span><span class="v">Не более 1 рабочего дня</span></li>
         </ul>
+        <p style="margin-top:20px; font-size:14px; color:var(--muted)">Обращения принимает лично специалист сервиса. Подробно о поддержке и возвратах — на странице <a href="/support.html" style="color:var(--accent)">Поддержка</a>.</p>
       </div>
 
       <div class="cta-right">
@@ -542,7 +551,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent); outline:none
             <textarea id="f-comment" name="comment" rows="3" placeholder="Чем торгуете, с какого числа нужна касса, нужна ли маркировка"></textarea>
           </div>
           <button class="btn btn-primary" type="submit">Отправить заявку</button>
-          <p class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+          <p class="agree">Нажимая кнопку, вы принимаете <a href="/terms.html">Пользовательское соглашение</a> и даёте согласие на обработку персональных данных в соответствии с <a href="/privacy.html">Политикой конфиденциальности</a>.</p>
         </form>
         <div class="sent" id="sent" hidden>
           <b>Заявка принята</b>
@@ -551,12 +560,46 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent); outline:none
       </div>
     </div>
   </section>
+
+  <!-- DOCS -->
+  <section class="wrap sec" id="docs">
+    <div class="sec-head">
+      <p class="eyebrow">08 — Документы</p>
+      <div>
+        <h2>Условия и поддержка</h2>
+        <p class="lede">Условия оказания услуг, порядок оплаты и возврата, обработка персональных данных и контакты поддержки — доступны постоянно, на отдельных страницах.</p>
+      </div>
+    </div>
+
+    <div class="cases">
+      <a class="case doclink" href="/terms.html">
+        <h3>Пользовательское соглашение</h3>
+        <p>Предмет договора, тарифы по моделям, порядок оплаты и условия возврата средств.</p>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="case doclink" href="/privacy.html">
+        <h3>Политика конфиденциальности</h3>
+        <p>Какие данные собираются, как используются, кому передаются и как их удалить.</p>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="case doclink" href="/support.html">
+        <h3>Поддержка</h3>
+        <p>Telegram, телефон и почта. Время работы, сроки ответа и порядок возврата.</p>
+        <span class="go">Открыть →</span>
+      </a>
+    </div>
+  </section>
 </main>
 
 <footer class="ftr">
   <div class="wrap ftr-in">
     <span>Касса 54 — аренда онлайн-касс в Москве</span>
-    <a href="#top">Наверх</a>
+    <span class="ftr-links">
+      <a href="/privacy.html">Политика конфиденциальности</a>
+      <a href="/terms.html">Пользовательское соглашение</a>
+      <a href="/support.html">Поддержка</a>
+    </span>
+    <span class="code">плаtega</span>
   </div>
 </footer>
 
